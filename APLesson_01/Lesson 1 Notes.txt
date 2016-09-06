@@ -1,0 +1,16 @@
+To compile a program you need to use the NPPExec plugin in NP++ using the command:
+//save the file
+NPP_SAVE
+
+//change to current directory
+cd "$(CURRENT_DIRECTORY)"
+
+//tell NP++ where java is
+C:\Program Files\Java\jdk1.8.0_05\bin\javac $(FILE_NAME)
+
+To execute a program, you use the same plugin and same command but instead of using "javac" and "FILE_NAME", you use "java" and "NAME_PART"
+
+To print a string I need to use the command:
+System.out.println("insert text here");
+
+I had to make some ASCII art using that program so what I did was find some ASCII art and copy and paste each line into a new println command.
