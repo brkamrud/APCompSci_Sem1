@@ -1,0 +1,33 @@
+I learned that variables are placeholders for data used in the program
+
+I learned about 4 different datatypes.
+String - datatype that holds text
+int - datatype that holds numbers not including decimals
+double - datatype that holds numbers including decimals
+boolean - datatype that holds either true or false
+
+To declare a variable you begin with the datatype then the name of the variable followed with a ;
+String name;
+int name;
+double name;
+boolean name;
+
+To apply data to a variable you have to set it equal to data that matches the variable's datatype
+String name;
+name = "hello";
+OR
+String name = "hello";
+
+Arithmetic operators work similarly to how calculators work except you or the program has to assign variables a value
+int num1 = 10;
+int num2 = 5;
+System.out.println(num1 + num2); will equal 15
+System.out.println(num1 - num2); will equal 5
+System.out.println(num1 * num2); will equal 50
+System.out.println(num1 / num2); will equal 2
+
+You can also do the same with string variables
+String text1 = "hello";
+String text2 = "there";
+System.out.println(text1 + text2); which will output "hellothere"
+
