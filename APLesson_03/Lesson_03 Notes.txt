@@ -1,0 +1,25 @@
+Identifiers that are easy to read help programming
+firstName or first_name instead of firstname
+
+Some classes you'll have to import to use in your program so you have to use the "import" command to use them
+import packageName.ClassName;
+ex: import java.Scanner;
+
+the Scanner class is used to retrieve input from the user
+//instantiates the new scanner object keyboard
+Scanner keyboard = new Scanner(System.in);
+
+//sets input value to a variable
+Datatype name = keyboard.nextDatatype();
+ex: String name = keyboard.next();
+    int number = keyboard.nextInt();
+
+Scanner Methods:
+nextInt() - returns next int value
+nextDouble() - returns next double value
+nextFloat() - returns next float value
+nextLong() - returns next long value
+nextByte() - returns next byte value
+nextShort() - returns next short value
+next() - returns next one word string value
+nextLine() - returns next multi-word string value
