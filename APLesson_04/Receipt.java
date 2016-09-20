@@ -27,12 +27,19 @@ public class Receipt
 		System.out.println("Please enter the price:");
 		double price3 = kb.nextDouble();
 		
-		System.out.println("<<<<<<<<<<<<<<<___Receipt___>>>>>>>>>>>>>>>");
+		double subtotal = price1 + price2 + price3;
+		double tax = subtotal * .07;
+		double total = subtotal + tax;
+		
+		System.out.println("<<<<<<<<<<<<<<<<<<___Receipt___>>>>>>>>>>>>>>>>>>");
 		form.format(food1, price1);
 		form.format(food2, price2);
 		form.format(food3, price3);
-	
-		
+		System.out.println("\n\n");
+		form.format("Subtotal:", subtotal);
+		form.format("Tax:", tax);
+		form.format("Total:", total);
+		System.out.println("\n________________________________________________\n * Thank you for your support *");
 	}
 	
 	

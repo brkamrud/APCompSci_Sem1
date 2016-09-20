@@ -1,0 +1,23 @@
+I learned how to create methods. They go in the class with the main but not in main
+public class Thing
+{
+
+	public static void main(String[]args)
+{
+	//stuff
+}
+
+	public void method(String stuff, int num)
+{
+	//stuff
+}
+
+}
+
+String stuff and int num in the method or what is called the parameters. They let data from outside the method be brought in and spit out
+
+If you want to use a method, you have to instantiate and object that will let you use the method in main.
+Thing objectname = new Thing();
+
+To use a method you have to call the method and put in the values that the method wants
+objectname.method(stuff2, num2);
