@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Ex_03
 {
@@ -6,7 +7,7 @@ public class Ex_03
 	{
 		Ex_03 calculate = new Ex_03();
 		Scanner kb = new Scanner(System.in);
-		
+		DecimalFormat df = new DecimalFormat(".00");
 		System.out.println("Enter your interest rate:");
 		double rate1 = kb.nextDouble();
 		
@@ -21,8 +22,9 @@ public class Ex_03
 		
 		
 		double total = calculate.loan(rate1, principal1, compound1, years1);
+		//df.format(total);
 		
-		System.out.println("Your total monthly payment is $" + total + ".");
+		System.out.println("Your total monthly payment is $" + df.format(total) + ".");
 		
 	}
 	
