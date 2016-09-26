@@ -21,3 +21,105 @@ Thing objectname = new Thing();
 
 To use a method you have to call the method and put in the values that the method wants
 objectname.method(stuff2, num2);
+
+
+Static is a modifier that lets the method be accessed in the class without instantiating an object
+
+Void is a return type for a method that tells the method what value it will be returning. In this case, it tells the method to return null or no value at all.
+
+Parameters is a placeholder for arguments to pass through the method. Only arguments that match the parameters can enter the method.
+
+
+To return values from a non-static method, you have to use a return statement in the method.
+
+public class Thing
+{
+
+	public static void main(String[]args)
+{
+	Thing callsMethods = new Thing();
+
+	double value1 = 5;
+	double value2 = 10;
+	
+	double retrievesTheValue = callsMethods.method(value1, value2); //the 2 value arguments are passed through the parameters of the method, used to assign returnValue and value and then returns that value to retrievesTheValue
+
+}
+
+	public double method(double num1, double num2)
+{
+	double returnValue = //math stuff
+
+	return returnValue; //returns the value that was given to returnValue
+}
+
+}
+
+
+
+If you want to call a method without having to instantiate an object, use parameters, and use a return statement, you use a static method.
+A static method will be available everywhere in the class without having to do all of that stuff.
+
+public class Sum
+{
+
+
+	public static void main(String[]args)
+{	
+	int sum = add(5,5);
+	print(sum);
+
+}
+
+	public static int add(int one, int two)
+{
+	return one + two;
+
+
+}
+
+	public static void print(int s)
+{
+	System.out.println("The sum of your numbers is" + s );
+
+
+}
+
+
+}
+
+
+Lesson 4 Questions:
+1. It needs to be public so it can be called by outside programs and classes
+
+2. It needs to be static so it can accessed by other methods in the class without having to instantiate an object
+
+3. We need parameters because they allow arguments to enter the method so they can be used. Without them, methods would be pretty useless.
+
+4. A static method can be accessed anywhere in the class without and object having to call it. A non-static method can only be accessed by being called by an object.
+
+5. public class thing
+{
+	public static void main(String[]args)
+{
+	Scanner kb = new Scanner(System.in);
+	
+	System.out.println("Insert a # 1 - 5);
+	int one = kb.nextInt();
+
+	System.out.println("Insert another # 1 - 5);
+	int two = kb.nextInt();
+
+	System.out.println(one + " + " + two + " = " + methodYou());
+
+}
+
+
+	public static int methodYou()
+{
+	return one + two;
+
+}
+
+
+}
