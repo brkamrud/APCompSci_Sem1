@@ -8,15 +8,17 @@ public class Cube
 	
 	public static void main(String[]args)
 	{
+		Cube method = new Cube();
+		
 		System.out.println("Enter the length of your cube:");
 		double length = kb.nextDouble();
 		
-		double surfaceArea = calcSurf(length);
-		print(surfaceArea, length);
+		double surfaceArea = method.calcSurf(length);
+		method.print(surfaceArea, length);
 		
 	}
 	
-	public static double calcSurf(double L)
+	public double calcSurf(double L)
 	{
 		double sa = 6 * (Math.pow(L, 2));
 		return sa;
@@ -24,7 +26,7 @@ public class Cube
 		
 	}
 	
-	public static void print(double x, double y)
+	public void print(double x, double y)
 	{
 		System.out.println("The surface area of a cube with " + y + " feet sides is " + df.format(x) + ".");
 		

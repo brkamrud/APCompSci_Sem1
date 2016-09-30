@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
-public class Circle
+public class CircleStatic
 {
 	static DecimalFormat df = new DecimalFormat(".#####");
 	static Scanner kb = new Scanner(System.in);
@@ -12,7 +12,7 @@ public class Circle
 		double r = kb.nextDouble();
 		
 		double area = calcArea(r);
-		print(r, area);
+		print(r);
 		
 	}
 	
@@ -23,9 +23,9 @@ public class Circle
 		
 	}
 	
-	public static void print(double x, double y)
+	public static void print(double x)
 	{
-		System.out.println("The surface area of a circle with a radius of " + x + " is " + df.format(y));
+		System.out.println("The surface area of a circle with a radius of " + x + " is " + df.format(calcArea(x)));
 		
 		
 	}

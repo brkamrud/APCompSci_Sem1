@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
-public class Average
+public class AverageStatic
 {
 	
 	static DecimalFormat df = new DecimalFormat(".#####");

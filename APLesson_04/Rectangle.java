@@ -5,6 +5,8 @@ public class Rectangle
 {
 	public static void main(String[]args)
 	{
+		Rectangle method = new Rectangle();
+		
 		Scanner kb = new Scanner(System.in);
 		DecimalFormat df = new DecimalFormat(".#####");
 		
@@ -14,13 +16,13 @@ public class Rectangle
 		System.out.println("Enter the length:");
 		double length = kb.nextDouble();
 		
-		double perimeter = calcPerim(width, length);
+		double perimeter = method.calcPerim(width, length);
 		
 		System.out.println("Your rectangle is " + df.format(perimeter) + " sq ft around.");
 		
 	}
 	
-	public static double calcPerim(double w, double l)
+	public double calcPerim(double w, double l)
 	{
 		return (w * 2) + (l * 2);
 		

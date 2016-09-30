@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
-public class Rectangle
+public class RectangleStatic
 {
 	public static void main(String[]args)
 	{
