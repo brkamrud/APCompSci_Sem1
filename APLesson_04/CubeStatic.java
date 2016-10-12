@@ -3,6 +3,7 @@ import java.text.DecimalFormat;
 
 public class CubeStatic
 {
+
 	static DecimalFormat df = new DecimalFormat(".#####");
 	static Scanner kb = new Scanner(System.in);
 	
