@@ -12,18 +12,18 @@ public class TreeDeg60
 		int stop = word.length();
 		int start = 0;
 		
-		System.out.printf("%20s", tree(word, start, stop));
+		System.out.print(tree(word, start, stop));
 	}
 	
 	public static String tree(String word, int start, int stop)
 	{
 		if (start <= stop)
 		{
-			System.out.println(word.substring(0 , start));
+			System.out.printf("%10s\n",word.substring(0 , start));
 			start += 1;
 			return tree(word, start, stop);
 		}
 		else
-			return word;
+			return "";
 	}
 }
