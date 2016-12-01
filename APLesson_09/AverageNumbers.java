@@ -1,10 +1,11 @@
 
 public class AverageNumbers
 {
-	static int[] numbers = new int[10];
 	
 	public static void main(String[]args)
 	{
+		int[] numbers = new int[10];
+		
 		for (int i = 0; i < numbers.length; i++)
 		{
 			numbers[i] = (int)(Math.random() * 100) + 1;
@@ -16,11 +17,11 @@ public class AverageNumbers
 			System.out.println(number);
 		}
 		
-		average();
+		average(numbers);
 		
 	}
 	
-	public static void average()
+	public static void average(int[] numbers)
 	{
 		int avg = 0;
 		for (int number : numbers)

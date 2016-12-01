@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class FirstLetter
 {
-	static String[] words = new String[5];
 	
 	public static void main(String[]args)
 	{
 		Scanner kb = new Scanner(System.in);
+		String[] words = new String[5];
 		
 		System.out.println("Enter 5 words:");
 		for (int i = 0; i < words.length; i++)
@@ -14,11 +14,11 @@ public class FirstLetter
 			words[i] = kb.next();
 		}
 		
-		first();
+		first(words);
 		
 	}
 	
-	public static void first()
+	public static void first(String[] words)
 	{
 		int i = 0;
 		for (String word : words)
