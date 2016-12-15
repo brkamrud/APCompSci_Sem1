@@ -31,6 +31,6 @@ public class Divisor
 			}
 		}
 		
-		System.out.println("There are/is " + count + " number(s) divisible by " + divisor + " in the Array.");
+		System.out.println("There is/are " + count + " number(s) divisible by " + divisor + " in the Array.");
 	}
 }
