@@ -11,40 +11,40 @@ public abstract class Toy
 	}
 	
 	//C w/ P
-	public Toy(String name)
+	public Toy(String n)
 	{
-		this.name = name;
+		this.name = n;
 		this.count = 1;
 	}
 	
 	//Accessors
 	public String getName()
 	{
-		return this.name;
+		return name;
 	}
 	
 	public int getCount()
 	{
-		return this.count;
+		return count;
 	}
 	
 	//Modifiers
-	public void setName()
+	public void setName(String n)
 	{
-		
+		this.name = n;
 	}
 	
-	public void setCount()
+	public void setCount(int c)
 	{
-		
+		this.count = c;
 	}
 	
 	//Abstract Method
-	public abstract void getType();
+	public abstract String getType();
 	
 	//ToString
 	public String toString()
 	{
-		return "[" + this.name + "] [" + this.count + "]";
+		return "[" + name + "] [" + count + "]";
 	}
 }
