@@ -1,13 +1,13 @@
-public class AFigure extends Toy
-{	
+public class Car extends Toy
+{
 	//DC
-	public AFigure()
+	public Car()
 	{
 		super();
 	}
 	
 	//C w/ P
-	public AFigure(String name)
+	public Car(String name)
 	{
 		super(name);
 	}
@@ -37,12 +37,7 @@ public class AFigure extends Toy
 	//Abstract Method
 	public String getType()
 	{
-		return "Action Figure";
+		return "Car";
 	}
-	
-	//ToString
-	public String toString()
-	{
-		return super.toString();
-	}
+
 }

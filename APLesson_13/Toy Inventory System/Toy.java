@@ -45,6 +45,6 @@ public abstract class Toy
 	//ToString
 	public String toString()
 	{
-		return "[" + name + "] [" + count + "]";
+		return name + " - " + count;
 	}
 }
