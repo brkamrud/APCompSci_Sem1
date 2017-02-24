@@ -6,7 +6,7 @@ public class GameSystem
 	public GameSystem()
 	{
 		platform = "";
-		serialNo = 0;
+		serialNo = (int)(Math.random() * ((9999999 - 1000000) + 1)) + 1000000;
 	}
 	
 	public GameSystem(String p)
