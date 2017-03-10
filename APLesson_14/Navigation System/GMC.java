@@ -1,4 +1,4 @@
-public class GMC implements Location
+public class GMC extends Car
 {
 	private double x, y;
 	
