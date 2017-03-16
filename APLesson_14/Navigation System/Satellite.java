@@ -13,23 +13,30 @@ public class Satellite
        double[] home = {0, 0};
 
 
-       String printout = "\n\n" +
-               "==========================" + "\nStarting locations...";
+       // String printout = "\n\n" + "==========================" + "\nStarting locations...";
 
 
+       // for (Location l : locate)
+       // {
+           // printout += "\nLocation for " + l.getID() + ": (" + getLocation(l.getLoc()) + ")";
+       // }
+	   
+
+       // printout += "\n\n" + "==========================" + "\nDistance from home..."; 
+
+	   
+	   for (Location l : locate)
+	   {
+		   double one = (double)(Math.random() * 100) + 1;
+		   double two = (double)(Math.random() * 100) + 1;
+		   
+		   l.move(one, two);
+		   
+	   }
+	   
        for (Location l : locate)
        {
-           printout += "\nLocation for " + l.getID() + ": (" + getLocation(l.getLoc()) + ")";
-       }
-
-
-       printout += "\n\n" + "==========================" +
-                   "\nDistance from home...";
-
-
-       for (Location l : locate)
-       {
-           printout += "\nDistance for " + l.getID() + ": (" + getDistance(l.getLoc(), home)+ ")";
+           printout += "\n\tDistance for " + l.getID() + ": (" + getDistance(l.getLoc(), home)+ ")";
        }
 
 

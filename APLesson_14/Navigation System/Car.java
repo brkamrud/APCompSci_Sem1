@@ -1,11 +1,11 @@
 public abstract class Car implements Location
 {
-	private double[] location = new double[2];
+	private double[] location;
 	public final int ID = (int)(Math.random() * ((999999 - 100000) + 1)) + 100000;
 	
 	public Car()
 	{
-		double[] loc = location.clone(); 
+		location = new double[2]; 
 	}
 	
 	public int getID()
@@ -13,7 +13,11 @@ public abstract class Car implements Location
 		return ID;
 	}
 	
-	public abstract void move(double x, double y);
+	public void move(double x, double y)
+	{
+		location[0] = x;
+		location[1] = y;
+	}
 	
 	public double[] getLoc()
 	{
