@@ -4,7 +4,8 @@ public class Toyota extends Car
 	
 	public Toyota(String coord)
 	{
-		
+		String[] cd =  new String[2];
+		cd = coord.split(", ");
 	}
 	
 	// public Toyota(String coordinates)

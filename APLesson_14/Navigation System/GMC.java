@@ -2,9 +2,10 @@ public class GMC extends Car
 {
 	//private double x, y;
 	
-	public GMC(double x, y)
+	public GMC(double x, double y)
 	{
-		
+		x = x;
+		y = y;
 	}
 	
 	// public GMC(double x1, double y1)

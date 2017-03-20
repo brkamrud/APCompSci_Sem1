@@ -11,8 +11,7 @@ public class Satellite
 
 
        double[] home = {0, 0};
-
-
+	   
        // String printout = "\n\n" + "==========================" + "\nStarting locations...";
 
 
@@ -30,8 +29,10 @@ public class Satellite
 		   double one = (double)(Math.random() * 100) + 1;
 		   double two = (double)(Math.random() * 100) + 1;
 		   
-		   l.move(one, two);
+		   Car object = new l(one, two);
+		   object.move();
 		   
+		   System.out.println("========================== \nAfter " + object.getID() + " Moved (" + one + ", " + two + ")\nNew Location: " + object.getLoc());
 	   }
 	   
        for (Location l : locate)

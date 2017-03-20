@@ -4,7 +4,7 @@ public class Honda extends Car
 	
 	public Honda(double[] loc)
 	{
-		
+		loc = new double[2];
 	}
 	
 	// public int getID()
