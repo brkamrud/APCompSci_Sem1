@@ -36,13 +36,13 @@ public class Satellite
 		   System.out.println("After " + object.getID() + " Moved (" + one + ", " + two + ")\nNew Location: " + object.getLoc() + "\n");
 	   }
 	   
+	   System.out.print("Distance from home...");
+	   
        for (Location l : locate)
        {
-           "\nDistance for " + l.getID() + ": (" + getDistance(l.getLoc(), home)+ ")";
+           System.out.print("\n\tDistance for " + l.getID() + ": (" + getDistance(l.getLoc(), home)+ ")");
        }
 
-
-       System.out.println(printout);
    }
 
 
