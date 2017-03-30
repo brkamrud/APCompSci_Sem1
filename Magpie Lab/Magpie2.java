@@ -15,17 +15,17 @@ public class Magpie2
 	{
 		String response = "";
 		
-		if (statement.equals(""))
-		{
-			return "Say something, please.";
-		}
 		/** Exercise_01:
 		 * ==================================================
 		 * 	Code that asks the user "Say something, please."
 		 * 	if you enter nothing, or if you accidentally hit
 		 * 	enter. Think to yourself: "What is the length of
 		 * 	an empty String?" */
-
+		 
+		if (statement.equals(""))
+		{
+			return "Say something, please.";
+		}
 
 		/** To be completed in Exercise_02:
 		 * 	Modify the following code to use the findKeyword
@@ -68,6 +68,16 @@ public class Magpie2
 		String modStatement = statement;
 		modStatement.trim();
 		modStatement.toLowerCase();
+		
+		int psn = modStatement.indexOf(goal, startPos);
+		
+		if (modStatement.charAt(psn - 1).equals("") || modStatement.charAt(psn - 1).equals(" "))
+		{
+			if (modStatement.charAt(psn + goal.length()).equals("") || modStatement.charAt(psn + goal.length()).equals(" "))
+			{
+				
+			}
+		}
 		/* New String variable phrase = a more searchable version of statement.
 		 	-Use a combination of trim() and toLowerCase() modify statement.
 
