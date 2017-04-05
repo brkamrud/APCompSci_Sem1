@@ -70,13 +70,18 @@ public class Magpie2
 		modStatement.toLowerCase();
 		
 		int psn = modStatement.indexOf(goal, startPos);
+		char CHAR1, CHAR2;
+		CHAR1 = modStatement.charAt(psn - 1);
+		CHAR2 = modStatement.charAt(psn + goal.length());
 		
-		if (modStatement.charAt(psn - 1).equals("") || modStatement.charAt(psn - 1).equals(" "))
+		if (CHAR1 == Character.MIN_VALUE || CHAR1 == ' ')
 		{
-			if (modStatement.charAt(psn + goal.length()).equals("") || modStatement.charAt(psn + goal.length()).equals(" "))
+			if (CHAR2 == Character.MIN_VALUE || CHAR2 == ' ')
 			{
-				
+				return psn;
 			}
+			else
+				psn = modStatement.indexOf(goal, startPos + 1);
 		}
 		/* New String variable phrase = a more searchable version of statement.
 		 	-Use a combination of trim() and toLowerCase() modify statement.
