@@ -22,7 +22,7 @@ public class Magpie2
 		 * 	enter. Think to yourself: "What is the length of
 		 * 	an empty String?" */
 		 
-		if (statement.equals(""))
+		if (statement.trim().equals(""))
 		{
 			return "Say something, please.";
 		}
@@ -35,10 +35,10 @@ public class Magpie2
 			response = "Why so negative?";
 		}
 
-		else if (statement.indexOf("mother") >= 0
-				|| statement.indexOf("father") >= 0
-				|| statement.indexOf("sister") >= 0
-				|| statement.indexOf("brother") >= 0)
+		else if (findKeyword(statement, "mother") >= 0
+				|| findKeyword(statement, "father") >= 0
+				|| findKeyword(statement, "sister") >= 0
+				|| findKeyword(statement, "brother") >= 0)
 		{
 			response = "Tell me more about your family.";
 		}
@@ -66,8 +66,8 @@ public class Magpie2
 	private int findKeyword(String statement, String goal, int startPos)
 	{
 		String modStatement = statement;
-		modStatement.trim();
-		modStatement.toLowerCase();
+		modStatement.trim().toLowerCase();
+		goal.trim().toLowerCase();
 		
 		int psn = modStatement.indexOf(goal, startPos);
 		char CHAR1, CHAR2;
@@ -81,36 +81,8 @@ public class Magpie2
 				return psn;
 			}
 			else
-				psn = modStatement.indexOf(goal, startPos + 1);
+				findKeyword(statement, goal, startPos + 1);
 		}
-		/* New String variable phrase = a more searchable version of statement.
-		 	-Use a combination of trim() and toLowerCase() modify statement.
-
-		   New int variable psn = the location of goal in phrase after
-		   startPos
-
-			-->Refinement: Make sure we find goal by itself, and not part
-			of another word ("no" vs no in "know"). if you find an occurrence
-			of goal, make sure before and after aren't letters.
-
-			As long as psn >= 0...
-				Check if psn > 0 - there is no need to check for before at the
-				beginning of the word
-					set before = the slot in phrase before psn */
-
-				//====>code here
-
-				/*check if you can fit goal into the rest of phrase - no need to
-				proceed otherwise
-					set after = the slot in phrase after psn + length of goal */
-
-				//=====> code here
-
-				/* if before and after are not letters (compare before to "a"
-					and after to "z")
-						--return psn
-
-				Otherwise, search for goal in phrase from psn + 1 forward */
 
 		return -1;
 
