@@ -4,19 +4,21 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Server extends JFrame
+public class Client extends JFrame
 {
-	private  JTextField userText;
+	private JTextField userText;
 	private JTextArea chatWindow;
 	private ObjectOutputStream output;
 	private ObjectInputStream input;
-	private ServerSocket server;
+	private String message = "";
+	private String serverIP;
 	private Socket connection;
 	
 	//constructor
-	public Server()
+	public Client(String host)
 	{
-		super("Instant Messenger");
+		super("Client");
+		serverIP = host;
 		userText = new JTextField();
 		userText.setEditable(false);
 		userText.addActionListener(
@@ -29,71 +31,62 @@ public class Server extends JFrame
 		);
 		add(userText, BorderLayout.NORTH);
 		chatWindow = new JTextArea();
-		add(new JScrollPane(chatWindow));
+		add(new JScrollPane(chatWindow), BorderLayout.CENTER);
 		setSize(300, 150);
 		setVisible(true);
 	}
 	
-	//set up and run server
+	//connect to server
 	public void startRunning()
 	{
 		try{
-			server = new ServerSocket(6789, 100);
-			while(true){
-				try{
-					//connect and have conversation
-					waitForConnection();
-					setupStreams();
-					whileChatting();
-				}catch(EOFException eofException){
-					showMessage("\n Server ended the conenction");
-				}finally{
-					closeSnS();
-				}
-			}
+			connectToServer();
+			setupStreams();
+			whileChatting();
+		}catch(EOFException eofException){
+			showMessage("\n Client ended connection");
 		}catch(IOException ioException){
 			ioException.printStackTrace();
+		}finally{
+			closeSnS();
 		}
 	}
 	
-	//wait for connection, then display connection info
-	private void waitForConnection() throws IOException
+	//connect to server
+	private void connectToServer() throws IOException
 	{
-		showMessage(" Waiting for someone to connect...\n");
-		connection = server.accept();
-		showMessage(connection.getInetAddress().getHostName() + " has connected\n");
+		showMessage("Attempting connection... \n");
+		connection = new Socket(InetAddress.getByName(serverIP), 6789);
+		showMessage("Connected to: " + connection.getInetAddress().getHostName());
 	}
 	
-	//get stream to send and receive data
+	//set up streams to send and receive messages
 	private void setupStreams() throws IOException
 	{
 		output = new ObjectOutputStream(connection.getOutputStream());
 		output.flush();
 		input = new ObjectInputStream(connection.getInputStream());
-		showMessage("\n Streams are setup \n");
+		showMessage("\n Connected");
 	}
 	
-	//during the chat conversation
+	//while chatting with server
 	private void whileChatting() throws IOException
 	{
-		String message = " You are now connected\n";
-		sendMessage(message);
 		ableToType(true);
 		do{
-			//have conversation
 			try{
 				message = (String) input.readObject();
 				showMessage("\n" + message);
-			}catch(ClassNotFoundException classNotFoundException){
-				showMessage("\n CAN'T DISPLAY TEXT");
+			}catch(ClassNotFoundException classNotfoundException){
+				showMessage("\n CAN'T DISPLAY MESSAGE");
 			}
-		}while(!message.equals("CLIENT - END"));
+		}while(!message.equals("SERVER - END"));
 	}
 	
-	//close streams and sockets
+	//close the streams and sockets
 	private void closeSnS()
 	{
-		showMessage("\n Closing connection... \n");
+		showMessage("\n Closing connection...\n");
 		ableToType(false);
 		try{
 			output.close();
@@ -104,25 +97,24 @@ public class Server extends JFrame
 		}
 	}
 	
-	//sends message to client
-	private void sendMessage(String message)
-	{
+	//send messages to server
+	private void sendMessage(String message){
 		try{
-			output.writeObject("SERVER - " + message);
+			output.writeObject("CLIENT - " + message);
 			output.flush();
-			showMessage("\nServer - " + message);
+			showMessage("\nCLIENT - " + message);
 		}catch(IOException ioException){
-			chatWindow.append("\n MESSAGE FAILED TO SEND");
+			chatWindow.append("\nMESSAGE FAILED TO SEND");
 		}
 	}
 	
-	//updates chatWindow
-	private void showMessage(final String text)
+	//update chatWindow
+	private void showMessage(final String message)
 	{
 		SwingUtilities.invokeLater(
 			new Runnable(){
 				public void run(){
-					chatWindow.append(text);
+					chatWindow.append(message);
 				}
 			}
 		);
