@@ -42,6 +42,27 @@ public class Magpie2
 		{
 			response = "Tell me more about your family.";
 		}
+		
+		else if (findKeyword(statement, "dog") >= 0
+				|| findKeyword(statement, "cat") >= 0)
+		{
+			response = "Tell me more about your pet.";
+		}
+		
+		else if (findKeyword(statement, "sleep") >= 0)
+		{
+			response = "What would it mean to sleep?";
+		}
+		
+		else if (findKeyword(statement, "hate") >= 0)
+		{
+			response = "Why do you hate me?";
+		}
+		
+		else if (findKeyword(statement, "love") >= 0)
+		{
+			response = "What makes you think that I love you?";
+		}
 
 		/** Exercise_03(Final)
 		 * ==================================================
@@ -65,26 +86,36 @@ public class Magpie2
 	 * ========================================================= */
 	private int findKeyword(String statement, String goal, int startPos)
 	{
-		String modStatement = statement;
-		modStatement.trim().toLowerCase();
-		goal.trim().toLowerCase();
-		
-		int psn = modStatement.indexOf(goal, startPos);
-		char CHAR1, CHAR2;
-		CHAR1 = modStatement.charAt(psn - 1);
-		CHAR2 = modStatement.charAt(psn + goal.length());
-		
-		if (CHAR1 == Character.MIN_VALUE || CHAR1 == ' ')
-		{
-			if (CHAR2 == Character.MIN_VALUE || CHAR2 == ' ')
-			{
-				return psn;
-			}
-			else
-				findKeyword(statement, goal, startPos + 1);
-		}
 
-		return -1;
+				
+
+				
+		String modStatement = statement.trim().toLowerCase();
+		goal = goal.trim().toLowerCase();
+		int psn = modStatement.indexOf(goal, startPos);
+		
+		String before = "";
+		String after = "";
+		
+		while(psn >= 0)
+		{
+			if(psn > 0)
+				before = modStatement.substring(psn-1, psn);
+			
+			if(psn + goal.length() < statement.length())
+				after = statement.substring(psn + goal.length(), psn + goal.length() +1);
+			
+			if((before.compareTo("a") < 0 || before.compareTo("z") > 0) &&
+				(after.compareTo("a") < 0 || after.compareTo("z") > 0))
+				{
+					return psn;
+				}
+				
+			psn += 1;
+				//Otherwise, search for goal in phrase from psn + 1 forward  
+		}
+		
+		return psn;
 
 	}
 
