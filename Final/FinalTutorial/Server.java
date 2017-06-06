@@ -6,22 +6,23 @@ import javax.swing.*;
 
 public class Server extends JFrame
 {
-	private  JTextField userText;
+	private JTextField userText;
 	private JTextArea chatWindow;
 	private ObjectOutputStream output;
 	private ObjectInputStream input;
 	private ServerSocket server;
 	private Socket connection;
 	
-	//constructor
 	public Server()
 	{
-		super("Instant Messenger");
+		super("IM");
 		userText = new JTextField();
 		userText.setEditable(false);
 		userText.addActionListener(
-			new ActionListener(){
-				public void actionPerformed(ActionEvent event){
+			new ActionListener()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
 					sendMessage(event.getActionCommand());
 					userText.setText("");
 				}
@@ -30,120 +31,144 @@ public class Server extends JFrame
 		add(userText, BorderLayout.NORTH);
 		chatWindow = new JTextArea();
 		add(new JScrollPane(chatWindow));
-		setSize(300, 150);
+		setSize(600,300);
 		setVisible(true);
-		chatWindow.setEditable(false);
+		
 	}
 	
-	//set up and run server
 	public void startRunning()
 	{
-		try{
+		try
+		{
 			server = new ServerSocket(6789, 100);
-			while(true){
-				try{
-					//connect and have conversation
+			while(true)
+			{
+				try
+				{
 					waitForConnection();
 					setupStreams();
 					whileChatting();
-				}catch(EOFException eofException){
-					showMessage("\n Server ended the conenction");
-				}finally{
-					closeSnS();
 				}
+				catch(EOFException eofException)
+				{
+					showMessage("\n Server ended the connection! ");
+				}
+				finally
+				{
+					closeCrap();
+				}
+				
 			}
-		}catch(IOException ioException){
+		}
+		catch(IOException ioException)
+		{
 			ioException.printStackTrace();
 		}
+		
 	}
 	
-	//wait for connection, then display connection info
 	private void waitForConnection() throws IOException
 	{
-		showMessage(" Waiting for someone to connect...\n");
+		showMessage("Waiting for someone to connect.. \n");
 		connection = server.accept();
-		showMessage(connection.getInetAddress().getHostName() + " has connected\n");
+		showMessage(" Now connectied to " + connection.getInetAddress().getHostName());
+		
 	}
 	
-	//get stream to send and receive data
 	private void setupStreams() throws IOException
 	{
 		output = new ObjectOutputStream(connection.getOutputStream());
 		output.flush();
 		input = new ObjectInputStream(connection.getInputStream());
-		showMessage("\n Streams are setup \n");
+		showMessage("\n Streams are now setup! \n");
+
 	}
 	
-	//during the chat conversation
 	private void whileChatting() throws IOException
 	{
-		String message = " You are now connected\n";
+		String message = "You are now connected! ";
 		sendMessage(message);
-		ableToType(true);
-		do{
-			//have conversation
-			try{
-				waitForConnection();
+		abletoType(true);
+		do
+		{
+			try
+			{
 				message = (String) input.readObject();
 				showMessage("\n" + message);
-			}catch(ClassNotFoundException classNotFoundException){
-				showMessage("\n CAN'T DISPLAY TEXT");
 			}
-			catch(EOFException eofException){
-				showMessage("\n Server ended the conenction");
+			catch(ClassNotFoundException classNotFoundException)
+			{
+				showMessage(" \n Something went wrong. ");
 			}
+			
 		}while(!message.equals("CLIENT - END"));
+		
 	}
 	
-	//close streams and sockets
-	private void closeSnS()
+	public void closeCrap()
 	{
-		showMessage("\n Closing connection... \n");
-		ableToType(false);
-		try{
+		showMessage("\n Closing connections... \n");
+		abletoType(false);
+		try
+		{
 			output.close();
 			input.close();
 			connection.close();
-			waitForConnection();
-		}catch(IOException ioException){
+		}
+		catch(IOException ioException)
+		{
 			ioException.printStackTrace();
 		}
+		
+		
 	}
 	
-	//sends message to client
 	private void sendMessage(String message)
 	{
-		try{
+		try
+		{
 			output.writeObject("SERVER - " + message);
 			output.flush();
-			showMessage("\nServer - " + message);
-		}catch(IOException ioException){
-			chatWindow.append("\n MESSAGE FAILED TO SEND");
+			showMessage("\nSERVER - " + message);
 		}
+		catch(IOException ioException)
+		{
+			chatWindow.append("\n ERROR: Can't Send Message. ");
+		}
+
+		
 	}
 	
-	//updates chatWindow
 	private void showMessage(final String text)
 	{
 		SwingUtilities.invokeLater(
-			new Runnable(){
-				public void run(){
+			new Runnable()
+			{
+				public void run()
+				{
 					chatWindow.append(text);
 				}
 			}
 		);
+		
 	}
 	
-	//allows user to type
-	private void ableToType(final boolean tof)
+	private void abletoType(final boolean tof)
 	{
 		SwingUtilities.invokeLater(
-			new Runnable(){
-				public void run(){
+			new Runnable()
+			{
+				public void run()
+				{
 					userText.setEditable(tof);
 				}
 			}
 		);
 	}
+	
+	
+	
+	
+	
 	
 }

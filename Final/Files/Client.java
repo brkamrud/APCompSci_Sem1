@@ -42,7 +42,6 @@ public class Client extends JFrame
 		try{
 			connectToServer();
 			setupStreams();
-			ableToType(true);
 			whileChatting();
 		}catch(EOFException eofException){
 			showMessage("\n Client ended connection");
