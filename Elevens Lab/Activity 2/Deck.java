@@ -32,8 +32,8 @@ public class Deck {
     public Deck(String[] ranks, String[] suits, int[] values) {
         this.cards = new ArrayList<Card>();
         for (int i = 0; i < ranks.length; i++) {
-            Card aCard = new Card(ranks[i], suits[i], values[i]);
-            this.cards.add(aCard);
+			for(String suit: suits)
+				this.cards.add(new Card(ranks[i], suit, values[i]));
         }
         this.size = this.cards.size();
         shuffle();
